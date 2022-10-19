@@ -6,12 +6,11 @@ void unsigned_number_to_string(uint64_t number, int base, char *buffer)
 {
     if (number == 0)
     {
-        *buffer++ = '0'; // ascii character C
-        *buffer = 0;     // null terminator
+        *buffer = '0';
         return;
     }
 
-    // base
+    // base 
     char buf[65];
     for (int i = 0; i < 17; i++)
         buf[i] = 0;
@@ -35,18 +34,17 @@ void unsigned_number_to_string(uint64_t number, int base, char *buffer)
 
     for (int i = cur - 1; i != 0; i--)
         *buffer++ = buf[i];
-    *buffer++ = buf[0];
-    *buffer = 0;
+    *buffer = buf[0];
 }
 
-void number_to_string(uint64_t number, int base, char *buffer)
+void unsigned_number_to_string(uint64_t number, int base, char *buffer)
 {
     if (number < 0)
     {
         *buffer++ = '-';
         number = -number;
+        unsigned_number_to_string(number, base, buffer);
     }
-    unsigned_number_to_string(number, base, buffer);
 }
 
 // this is an analogue to vprintf function provided
@@ -106,31 +104,11 @@ void _vprintf(const char *format, va_list arguments)
                 break;
             }
             case 'd':
-            {
-                int n = va_arg(arguments, int);
-
-                // 2^64-1 = 10*10^24
-                char buf[32]; // you can do 25 and above
-                number_to_string(n, 10, buf);
-                for (int i = 0; buf[i]; i++)
-                {
-                    putchar(buf[i]);
-                }
+                /* code */
                 break;
-            }
             case 'x':
-            {
-                int n = va_arg(arguments, int);
-
-                // 2^64-1 = 10*10^24
-                char buf[32]; // you can do 25 and above
-                number_to_string(n, 16, buf);
-                for (int i = 0; buf[i]; i++)
-                {
-                    putchar(buf[i]);
-                }
+                /* code */
                 break;
-            }
             // pointers next
             case 'p':
                 // recall that pointer prepends
