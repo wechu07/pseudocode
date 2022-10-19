@@ -2,7 +2,7 @@
 #include <stdarg.h>
 #include <stdint.h>
 
-void unsigned_number_to_string(uint64_t number, char *buffer)
+void unsigned_number_to_string(uint64_t number, int base, char *buffer)
 {
     if (number == 0)
     {
@@ -10,6 +10,7 @@ void unsigned_number_to_string(uint64_t number, char *buffer)
         return;
     }
 
+    // base 16
     char buf[17];
     for (int i = 0; i < 17; i++)
         buf[i] = 0;
@@ -34,6 +35,16 @@ void unsigned_number_to_string(uint64_t number, char *buffer)
     for (int i = cur - 1; i != 0; i--)
         *buffer++ = buf[i];
     *buffer = buf[0];
+}
+
+void signed_number_to_string(uint64_t number, int base, char *buffer)
+{
+    if (number < 0)
+    {
+        *buffer++ = '-';
+        number = -number;
+        unsigned_number_to_string(number, base, buffer);
+    }
 }
 
 // this is an analogue to vprintf function provided
