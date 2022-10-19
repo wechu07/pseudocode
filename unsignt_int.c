@@ -37,16 +37,6 @@ void unsigned_number_to_string(uint64_t number, int base, char *buffer)
     *buffer = buf[0];
 }
 
-void signed_number_to_string(uint64_t number, int base, char *buffer)
-{
-    if (number < 0)
-    {
-        *buffer++ = '-';
-        number = -number;
-        unsigned_number_to_string(number, base, buffer);
-    }
-}
-
 // this is an analogue to vprintf function provided
 // in starg.h
 // @state: kind of like return value
