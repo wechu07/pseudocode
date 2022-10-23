@@ -91,9 +91,10 @@ void _vprintf(const char *format, va_list arguments)
 
             // next we do strings
             // using %s
-            case 's':
+            case 's': // ;
             {
                 // note the semicolon
+                // I have 
                 // found this while debugging
                 // https://www.educative.io/answers/resolving-the-a-label-can-only-be-part-of-a-statement-error
                 const char *s = (char *)va_arg(arguments, const char *);
