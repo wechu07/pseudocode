@@ -18,5 +18,7 @@ void unsigned_number_to_string(uint64_t number, int base, char *buffer);
 void number_to_string(uint64_t number, int base, char *buffer);
 void _vprintf(const char *format, va_list arguments);
 void _printf(const char *format, ...);
+char *convert(unsigned int number, int base);
+int _putchar(char c);
 
 #endif  /* _MAIN_H */

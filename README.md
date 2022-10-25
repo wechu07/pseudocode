@@ -10,7 +10,7 @@
 - the _printf.c file
 
 ## files you may want to implement (we will figure out)
-- using putchar to print a character as we go
+- using _putchar (from _putchar.c) to print a character as we go
 
 ## implementation steps
 1. character.c file
